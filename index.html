@@ -131,7 +131,7 @@ footer a{color:var(--gold)}
 <body>
 <header class="hero">
   <div class="wrap">
-    <div class="top"><span class="logo">LUXE ACCESSORIES</span><span class="hide-sm">مجوهرات · نظارات · أقلام · أثواب</span><a href="https://drive.google.com/drive/folders/1k7_-ikEoMkLY5unOp6se2Eyp52ojfNQt" target="_blank" rel="noopener">المجلد الأصلي</a></div>
+    <div class="top"><span class="logo">LUXE ACCESSORIES</span><span class="hide-sm">مجوهرات · نظارات · أقلام · أثواب</span></div>
     <div class="hero-body">
       <div>
         <p class="eyebrow">كتالوج المنتجات</p>
@@ -147,11 +147,11 @@ footer a{color:var(--gold)}
 </header>
 <nav class="idx" aria-label="الأقسام"><div class="wrap" id="idx"><span class="bar" id="bar"></span></div></nav>
 <main class="wrap" id="main"></main>
-<footer><div class="wrap"><span class="logo">LUXE ACCESSORIES</span><span>الصور منسوخة من <a href="https://drive.google.com/drive/folders/1k7_-ikEoMkLY5unOp6se2Eyp52ojfNQt" target="_blank" rel="noopener">مجلد Google Drive</a></span></div></footer>
+<footer><div class="wrap"><span class="logo">LUXE ACCESSORIES</span><span>اكسسوارات رجالية ونسائية</span></div></footer>
 <button class="up" id="up" aria-label="للأعلى">↑</button>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="عرض الصورة">
-  <div class="lb-top"><div><span id="lbCap"></span><small id="lbNum"></small></div><div class="acts"><a id="lbOpen" target="_blank" rel="noopener">فتح في Drive</a><button class="ib" id="lbClose" aria-label="إغلاق">✕</button></div></div>
+  <div class="lb-top"><div><span id="lbCap"></span><small id="lbNum"></small></div><div class="acts"><button class="ib" id="lbClose" aria-label="إغلاق">✕</button></div></div>
   <div class="stage"><img id="lbImg" alt=""></div>
   <div class="thumbs" id="thumbs"></div>
   <button class="ib nav prev" id="lbPrev" aria-label="السابقة">›</button>
@@ -195,8 +195,8 @@ document.getElementById('main').innerHTML = groups.map(g=>`
   ${DATA.map((s,i)=>s.group!==g?'':`
   <section class="chapter" id="c${i}">
     <div class="ch-head"><h2>${s.name}</h2>
-      <div class="ch-meta"><span>${s.files.length ? s.files.length + ' صورة' : 'لا توجد صور'}</span><a href="https://drive.google.com/drive/folders/${s.id}" target="_blank" rel="noopener">Drive ↗</a></div></div>
-    ${s.files.length ? `<div class="grid" id="g${i}"></div><button class="more" id="m${i}" hidden></button>` : `<div class="empty">هذا القسم فاضي حالياً في Drive.</div>`}
+      <div class="ch-meta"><span>${s.files.length ? s.files.length + ' صورة' : 'لا توجد صور'}</span></div></div>
+    ${s.files.length ? `<div class="grid" id="g${i}"></div><button class="more" id="m${i}" hidden></button>` : `<div class="empty">هذا القسم فاضي حالياً.</div>`}
   </section>`).join('')}`).join('');
 
 const io = 'IntersectionObserver' in window ? new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }),{rootMargin:'0px 0px -6% 0px'}) : null;
@@ -267,7 +267,6 @@ function show(){
   img.src = src(id);
   document.getElementById('lbCap').textContent = s.name;
   document.getElementById('lbNum').textContent = `${k+1} / ${s.files.length}`;
-  document.getElementById('lbOpen').href = `https://drive.google.com/file/d/${id}/view`;
   thumbs.querySelectorAll('img').forEach(t=>t.classList.toggle('on', +t.dataset.j===k));
   thumbs.querySelector('img.on')?.scrollIntoView({inline:'center',block:'nearest'});
 }
