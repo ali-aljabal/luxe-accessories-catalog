@@ -5,118 +5,155 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>كتالوج الاكسسوارات</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500&family=El+Messiri:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* VOICE: quiet boutique, few hues, air around the pieces
-   IDEA: a jeweller's lookbook with tabbed sections like velvet trays
-   PICTURE: the photos themselves, a mosaic hero from each section
-   COLOUR and TYPE: off-white #F5EFE6 ground, dark brown #3D302B, soft gold #C6A477, white cards; El Messiri titles, Plex Arabic body, gold hairlines
-   LAYOUT: hero mosaic, sticky section chips, one band per folder, lightbox */
-:root{color-scheme:light;--bg:#F5EFE6;--card:#FFFFFF;--soft:#FFFFFF;--ink:#3D302B;--mute:#8a7463;--acc:#9c7b4e;--gold:#C6A477;--line:#e6dac8;--deep:#2b211d;--goldgrad:linear-gradient(135deg,#ead3a8 0%,#C6A477 50%,#9c7b4e 100%)}
+/* VOICE: a printed jeweller's lookbook, unhurried, framed like prints on linen
+   IDEA: each photo sits in a white mount with a gold hairline, like a boutique display card
+   PICTURE: a slow moving strip of real products in the hero, then mounted cards
+   COLOUR and TYPE: linen #F5EFE6, espresso #3D302B, soft gold #C6A477, white mounts; Amiri display, Plex Arabic text
+   LAYOUT: editorial hero, sliding section index, one chapter per folder, featured first card */
+:root{color-scheme:light;--linen:#F5EFE6;--white:#FFFFFF;--esp:#3D302B;--esp2:#2a201c;--gold:#C6A477;--gold2:#a8875a;--ink:#3D302B;--mute:#85705f;--line:#e5d8c5}
 :root[data-theme]{color-scheme:light}
 *{box-sizing:border-box;min-width:0}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans Arabic",system-ui,sans-serif;overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--linen);color:var(--ink);font:16px/1.65 "IBM Plex Sans Arabic",system-ui,sans-serif;overflow-x:clip}
 a{color:inherit}
-html{scroll-padding-top:84px;scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 .wrap{max-width:1240px;margin:auto;padding-inline:max(4vw,16px)}
-header.hero{background:radial-gradient(70% 80% at 90% 10%,rgba(198,164,119,.18),transparent 60%),radial-gradient(120% 90% at 85% 0%,#4a3a33 0%,#3D302B 45%,#241b17 100%);color:#F5EFE6;border-bottom:1px solid rgba(198,164,119,.45);position:relative;padding:clamp(28px,5vw,64px) 0}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(20px,4vw,56px);align-items:center}
-h1{color:#F5EFE6;letter-spacing:0;font:600 clamp(38px,5.4vw,58px)/1.08 "El Messiri",serif;margin:0 0 12px;text-wrap:balance}
-.lead{color:#d9cbb9;margin:0 0 22px;max-width:46ch}
-.stats{display:flex;gap:28px;flex-wrap:wrap}
-.stats b{display:block;font:600 34px/1 "El Messiri",serif;background:var(--goldgrad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.stats>div{padding-inline-start:18px;border-inline-start:1px solid rgba(198,164,119,.4)}
-.stats>div:first-child{padding-inline-start:0;border:0}
-.kicker{display:inline-flex;align-items:center;gap:10px;color:#C6A477;font-size:14px;margin-bottom:14px}
-.kicker::before,.kicker::after{content:'';width:28px;height:1px;background:#C6A477}
-.stats span{font-size:14px;color:#d9cbb9}
-.mosaic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(90px,12vw,150px);gap:8px}
-.mosaic img{color:transparent;font-size:0;width:100%;height:100%;object-fit:cover;border-radius:4px;background:#4a3b35;border:1px solid rgba(198,164,119,.55);box-shadow:0 18px 40px -18px rgba(0,0,0,.6)}
-.mosaic img:first-child{grid-row:span 2;grid-column:span 2}
-nav.chips{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav.chips .wrap{display:flex;gap:8px;align-items:center;padding-block:12px;overflow-x:auto;scrollbar-width:none}
-nav.chips .wrap::-webkit-scrollbar{display:none}
-.chip{flex:none;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:9px 16px;font:inherit;font-size:15px;cursor:pointer;min-height:44px;display:inline-flex;gap:8px;align-items:center;text-decoration:none;white-space:nowrap}
-.chip small{color:var(--mute);font-size:13px}
-.chip.on{background:#3D302B;color:#F5EFE6;border-color:#C6A477;box-shadow:inset 0 0 0 1px rgba(198,164,119,.5)}
-.chip:hover{border-color:var(--gold)}
-.chip.on small{color:inherit;opacity:.7}
-.chip:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.group{padding-top:clamp(28px,4vw,48px)}
-.group>h2{display:flex;align-items:center;gap:14px;font:500 15px/1 "El Messiri",serif;color:var(--acc);margin:0 0 6px}
-.group>h2::after{content:'';flex:1;height:1px;background:linear-gradient(to left,var(--gold),transparent)}
-section.sec{padding:18px 0 40px}
-.sec-head{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin-bottom:16px}
-.sec-head h3{font:600 clamp(24px,3vw,32px)/1.15 "El Messiri",serif;margin:0}
-.sec-head p{margin:2px 0 0;color:var(--mute);font-size:15px}
-.drive{font-size:14px;color:var(--acc);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px}
-.drive:hover{color:var(--acc)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
-.tile{position:relative;aspect-ratio:3/4;border:1px solid var(--line);padding:0;border-radius:4px;box-shadow:0 10px 24px -16px rgba(61,48,43,.45);overflow:hidden;background:var(--card);cursor:zoom-in}
-.tile:hover{border-color:var(--gold);box-shadow:0 16px 32px -16px rgba(61,48,43,.55)}
-.notice{display:none;background:#C6A477;color:#3D302B;padding:14px 0;font-size:15px}
-.notice.show{display:block}
-.notice b{font-weight:700}
-.tile img{color:transparent;width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease,opacity .3s;opacity:0}
-.tile img.ok{opacity:1}
-.tile:hover img{transform:scale(1.04)}
-.more{margin-top:14px}
-.empty{background:var(--soft);border-radius:12px;padding:28px;text-align:center;color:var(--mute)}
-footer{padding:36px 0 48px;color:var(--mute);font-size:14px;border-top:1px solid var(--line);margin-top:20px}
-.lb{position:fixed;inset:0;z-index:20;background:rgba(30,23,20,.97);display:none;grid-template-rows:auto minmax(0,1fr) auto;color:#fff}
-.lb.open{display:grid}
-.lb-top,.lb-bot{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px max(3vw,12px)}
-.lb-top span{font-size:15px;opacity:.85}
-.lb-stage{display:flex;align-items:center;justify-content:center;padding:0 60px;min-height:0}
-.lb-stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
-.ib{background:rgba(255,255,255,.12);border:0;color:#fff;width:46px;height:46px;border-radius:50%;font-size:22px;cursor:pointer;display:grid;place-items:center;text-decoration:none}
-.ib:hover{background:rgba(255,255,255,.22)}
-.lb .nav{position:absolute;top:50%;transform:translateY(-50%)}
-.lb .prev{right:10px}.lb .next{left:10px}
-.lb-bot a{color:#fff;font-size:14px;opacity:.8}
-@media(max-width:700px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.mosaic{order:-1}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.lb-stage{padding:0 8px}.lb .nav{top:auto;bottom:10px;transform:none}}
+.serif{font-family:Amiri,serif}
 
-.brandbar{background:#241b17;color:#C6A477;font:500 12px/1 "IBM Plex Sans Arabic",sans-serif;letter-spacing:.32em;border-bottom:1px solid rgba(198,164,119,.25)}
-.brandbar .wrap{display:flex;justify-content:center;align-items:center;gap:14px;padding-block:11px}
-.brandbar .mark{font-size:8px;letter-spacing:0}
-.badge{display:inline-block;margin-top:6px;padding:3px 12px;border:1px solid var(--gold);border-radius:999px;font-size:13px;color:var(--acc);background:#fff}
-.sec-head h3{position:relative}
-.tile::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(36,27,23,.55),transparent 45%);opacity:0;transition:opacity .3s}
-.tile::after{content:'تكبير';position:absolute;z-index:2;inset-inline:0;bottom:12px;text-align:center;color:#F5EFE6;font-size:13px;letter-spacing:.04em;opacity:0;transition:opacity .3s}
-.tile:hover::before,.tile:hover::after,.tile:focus-visible::before,.tile:focus-visible::after{opacity:1}
-.tile.bad::after{opacity:1;content:'تعذر تحميل الصورة';inset:0;bottom:auto;display:grid;place-items:center;color:var(--mute)}
-.group{position:relative}
-.group:nth-child(even){}
-.top{position:fixed;left:18px;bottom:18px;z-index:6;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);background:#3D302B;color:#C6A477;font-size:18px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s}
-.top.show{opacity:1;pointer-events:auto}
-footer .fbrand{display:block;font:600 22px/1.2 "El Messiri",serif;color:var(--ink);margin-bottom:6px}
+/* hero */
+.hero{background:var(--esp);color:var(--linen);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,rgba(198,164,119,.05) 0 1px,transparent 1px 120px);pointer-events:none}
+.top{display:flex;justify-content:space-between;align-items:center;padding-block:22px;border-bottom:1px solid rgba(198,164,119,.25);font-size:13px;color:#cdbca7}
+.logo{font:700 20px/1 Amiri,serif;color:var(--gold);letter-spacing:.02em}
+.top a{text-decoration:none;border-bottom:1px solid rgba(198,164,119,.5);padding-bottom:2px}
+.hero-body{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,5vw,72px);align-items:end;padding-block:clamp(40px,7vw,96px) clamp(28px,4vw,48px)}
+.eyebrow{color:var(--gold);font-size:14px;margin:0 0 18px;display:flex;align-items:center;gap:12px}
+.eyebrow::after{content:'';width:56px;height:1px;background:var(--gold)}
+h1{font:700 clamp(44px,7vw,92px)/1 Amiri,serif;margin:0;letter-spacing:0}
+h1 span{display:block;overflow:hidden;padding-bottom:.08em}
+h1 span i{display:block;font-style:normal;transform:translateY(105%);animation:rise 1.1s cubic-bezier(.2,.7,.1,1) forwards}
+h1 span:nth-child(2) i{animation-delay:.12s;color:var(--gold)}
+@keyframes rise{to{transform:none}}
+.hero-side p{margin:0 0 26px;color:#d8c9b6;max-width:40ch;opacity:0;animation:fade .9s .5s forwards}
+@keyframes fade{to{opacity:1}}
+.figs{display:flex;gap:0;border-top:1px solid rgba(198,164,119,.3);opacity:0;animation:fade .9s .7s forwards}
+.figs div{flex:1;padding:16px 0 4px;border-inline-start:1px solid rgba(198,164,119,.3);padding-inline-start:16px}
+.figs div:first-child{border:0;padding-inline-start:0}
+.figs b{display:block;font:700 34px/1 Amiri,serif;color:var(--gold)}
+.figs span{font-size:13px;color:#cdbca7}
+/* moving strip */
+.strip{position:relative;padding-block:0 clamp(28px,4vw,44px);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:14px;width:max-content;animation:slide 70s linear infinite}
+.strip:hover .track{animation-play-state:paused}
+.track img{width:clamp(120px,14vw,180px);aspect-ratio:3/4;object-fit:cover;border:6px solid #fff;outline:1px solid rgba(198,164,119,.6);outline-offset:-10px;box-shadow:0 14px 30px -14px rgba(0,0,0,.7);background:#4a3a33;color:transparent}
+.track img:nth-child(even){margin-top:22px}
+@keyframes slide{to{transform:translateX(50%)}}
+
+/* index */
+nav.idx{position:sticky;top:0;z-index:5;background:rgba(245,239,230,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.idx .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;position:relative}
+nav.idx .wrap::-webkit-scrollbar{display:none}
+nav.idx a{flex:none;text-decoration:none;padding:20px 14px 18px;font-size:15px;color:var(--mute);white-space:nowrap;transition:color .25s}
+nav.idx a small{font-size:12px;color:var(--gold2);margin-inline-start:4px}
+nav.idx a.on{color:var(--ink)}
+.bar{position:absolute;bottom:0;height:2px;background:var(--gold);transition:left .35s cubic-bezier(.2,.7,.1,1),width .35s cubic-bezier(.2,.7,.1,1)}
+
+/* chapters */
+.group-title{display:flex;align-items:center;gap:16px;margin:clamp(44px,6vw,80px) 0 0;color:var(--gold2);font-size:14px}
+.group-title::after{content:'';flex:1;height:1px;background:var(--line)}
+.chapter{padding-top:28px}
+.ch-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:16px;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--esp)}
+.ch-head h2{font:700 clamp(30px,4vw,46px)/1.05 Amiri,serif;margin:0}
+.ch-meta{display:flex;gap:18px;align-items:center;font-size:14px;color:var(--mute);white-space:nowrap}
+.ch-meta a{color:var(--gold2);text-decoration:none;border-bottom:1px solid var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,22px)}
+.card{position:relative;background:var(--white);padding:10px 10px 0;border:0;cursor:zoom-in;text-align:start;font:inherit;color:inherit;
+  box-shadow:0 1px 0 var(--line),0 18px 30px -24px rgba(61,48,43,.55);transform:translateY(24px);opacity:0;
+  transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.1,1),box-shadow .35s}
+.card.in{opacity:1;transform:none}
+.card .ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:#efe6d9}
+.card .ph::after{content:'';position:absolute;inset:8px;border:1px solid rgba(255,255,255,.75);pointer-events:none;opacity:0;transition:opacity .35s, inset .35s}
+.card img{width:100%;height:100%;object-fit:cover;display:block;color:transparent;transition:transform 1.2s cubic-bezier(.2,.7,.1,1),opacity .5s;opacity:0}
+.card img.ok{opacity:1}
+.card .cap{display:flex;justify-content:space-between;align-items:center;padding:10px 2px 12px;font-size:12px;color:var(--mute)}
+.card .cap b{font-weight:500;color:var(--ink)}
+.card .cap .v{color:var(--gold2);opacity:0;transform:translateX(6px);transition:.35s}
+.card:hover{box-shadow:0 1px 0 var(--gold),0 26px 40px -24px rgba(61,48,43,.7)}
+.card:hover img{transform:scale(1.06)}
+.card:hover .ph::after{opacity:1;inset:12px}
+.card:hover .cap .v{opacity:1;transform:none}
+.card.feat{grid-column:span 2;grid-row:span 2}
+.card.feat .ph{aspect-ratio:auto;height:calc(100% - 44px)}
+.card.bad .ph::before{content:'تعذر تحميل الصورة';position:absolute;inset:0;display:grid;place-items:center;font-size:13px;color:var(--mute)}
+.more{display:block;margin:22px auto 0;background:none;border:1px solid var(--esp);color:var(--esp);font:inherit;font-size:15px;padding:12px 28px;cursor:pointer;min-height:44px;transition:background .25s,color .25s}
+.more:hover{background:var(--esp);color:var(--linen)}
+.empty{border:1px dashed var(--gold);padding:34px;text-align:center;color:var(--mute);background:rgba(255,255,255,.5)}
+footer{margin-top:clamp(60px,8vw,110px);background:var(--esp2);color:#cdbca7;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:34px}
+footer .logo{font-size:24px}
+footer a{color:var(--gold)}
+.up{position:fixed;left:18px;bottom:18px;z-index:6;width:48px;height:48px;border-radius:50%;border:1px solid var(--gold);background:var(--esp);color:var(--gold);font-size:18px;cursor:pointer;opacity:0;transform:translateY(10px);pointer-events:none;transition:.3s}
+.up.show{opacity:1;transform:none;pointer-events:auto}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:20;background:rgba(36,27,23,.985);display:grid;grid-template-rows:auto minmax(0,1fr) auto;color:var(--linen);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.lb.open{opacity:1;visibility:visible}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:16px max(3vw,14px)}
+.lb-top span{font:700 22px/1 Amiri,serif;color:var(--gold)}
+.lb-top small{color:#cdbca7;margin-inline-start:10px;font:14px "IBM Plex Sans Arabic"}
+.stage{display:flex;align-items:center;justify-content:center;padding:0 70px;min-height:0}
+.stage img{max-width:100%;max-height:100%;object-fit:contain;border:8px solid #fff;transform:scale(.96);transition:transform .45s cubic-bezier(.2,.7,.1,1),opacity .3s}
+.lb.open .stage img{transform:none}
+.thumbs{display:flex;gap:8px;overflow-x:auto;padding:14px max(3vw,14px) 18px;scrollbar-width:thin}
+.thumbs img{flex:none;width:54px;height:70px;object-fit:cover;opacity:.45;cursor:pointer;border:1px solid transparent;transition:.25s;color:transparent}
+.thumbs img.on{opacity:1;border-color:var(--gold)}
+.ib{background:none;border:1px solid rgba(198,164,119,.6);color:var(--gold);width:48px;height:48px;border-radius:50%;font-size:20px;cursor:pointer;display:grid;place-items:center;text-decoration:none;transition:.25s}
+.ib:hover{background:var(--gold);color:var(--esp)}
+.lb .nav{position:absolute;top:50%;transform:translateY(-50%)}
+.lb .prev{right:14px}.lb .next{left:14px}
+.lb-top .acts{display:flex;gap:10px;align-items:center}
+.lb-top .acts a{font-size:13px;color:#cdbca7}
+
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){
+  .hero-body{grid-template-columns:minmax(0,1fr);align-items:start}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ch-head{grid-template-columns:minmax(0,1fr)}
+  .stage{padding:0 10px}.lb .nav{top:auto;bottom:96px;transform:none}
+  .top .hide-sm{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}h1 span i{transform:none}.card{opacity:1;transform:none}.hero-side p,.figs{opacity:1}}
 [hidden]{display:none!important}
 </style>
 </head>
 <body>
-<div class="brandbar"><div class="wrap"><span class="mark">◆</span><span>LUXE ACCESSORIES</span><span class="mark">◆</span></div></div>
 <header class="hero">
   <div class="wrap">
-    <div>
-      <div class="kicker">كتالوج المنتجات</div>
-      <h1>اكسسوارات رجالية ونسائية</h1>
-      <p class="lead">كل صور المجلد مرتبة حسب الأقسام. اضغط على أي صورة لتكبيرها، وتنقّل بين الصور بالأسهم.</p>
-      <div class="stats" id="stats"></div>
+    <div class="top"><span class="logo">LUXE ACCESSORIES</span><span class="hide-sm">مجوهرات · نظارات · أقلام · أثواب</span><a href="https://drive.google.com/drive/folders/1k7_-ikEoMkLY5unOp6se2Eyp52ojfNQt" target="_blank" rel="noopener">المجلد الأصلي</a></div>
+    <div class="hero-body">
+      <div>
+        <p class="eyebrow">كتالوج المنتجات</p>
+        <h1><span><i>اكسسوارات</i></span><span><i>رجالية ونسائية</i></span></h1>
+      </div>
+      <div class="hero-side">
+        <p>تشكيلة مختارة من السلاسل والأساور والخواتم والنظارات والأقلام، مرتبة حسب الأقسام. اضغط على أي قطعة لمشاهدتها بحجم كامل.</p>
+        <div class="figs" id="figs"></div>
+      </div>
     </div>
-    <div class="mosaic" id="mosaic"></div>
   </div>
+  <div class="strip" aria-hidden="true"><div class="track" id="track"></div></div>
 </header>
-<div class="notice" id="notice"><div class="wrap"><b>الصور ما تظهر؟</b> تأكد إن الصور مرفوعة في مجلد store في R2، أو افتح الصفحة في Chrome أو Safari.</div></div>
-<nav class="chips" aria-label="الأقسام"><div class="wrap" id="chips"></div></nav>
+<nav class="idx" aria-label="الأقسام"><div class="wrap" id="idx"><span class="bar" id="bar"></span></div></nav>
 <main class="wrap" id="main"></main>
-<button class="top" id="top" aria-label="للأعلى">↑</button>
-<footer class="wrap"><span class="fbrand">LUXE ACCESSORIES</span>الصور منسوخة من مجلد Google Drive. <a href="https://drive.google.com/drive/folders/1k7_-ikEoMkLY5unOp6se2Eyp52ojfNQt" target="_blank" rel="noopener">فتح المجلد الأصلي</a></footer>
+<footer><div class="wrap"><span class="logo">LUXE ACCESSORIES</span><span>الصور منسوخة من <a href="https://drive.google.com/drive/folders/1k7_-ikEoMkLY5unOp6se2Eyp52ojfNQt" target="_blank" rel="noopener">مجلد Google Drive</a></span></div></footer>
+<button class="up" id="up" aria-label="للأعلى">↑</button>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="عرض الصورة">
-  <div class="lb-top"><span id="lbCap"></span><button class="ib" id="lbClose" aria-label="إغلاق">✕</button></div>
-  <div class="lb-stage"><img id="lbImg" alt=""></div>
-  <div class="lb-bot"><a id="lbOpen" target="_blank" rel="noopener">فتح في Drive</a><span id="lbNum"></span></div>
+  <div class="lb-top"><div><span id="lbCap"></span><small id="lbNum"></small></div><div class="acts"><a id="lbOpen" target="_blank" rel="noopener">فتح في Drive</a><button class="ib" id="lbClose" aria-label="إغلاق">✕</button></div></div>
+  <div class="stage"><img id="lbImg" alt=""></div>
+  <div class="thumbs" id="thumbs"></div>
   <button class="ib nav prev" id="lbPrev" aria-label="السابقة">›</button>
   <button class="ib nav next" id="lbNext" aria-label="التالية">‹</button>
 </div>
@@ -124,105 +161,123 @@ footer .fbrand{display:block;font:600 22px/1.2 "El Messiri",serif;color:var(--in
 <script>
 {
 const DATA = [{"id":"14eMi-vYceQjudl_VM3Uo6duEkbyO9hpP","name":"سلاسل وحلق ماستر","group":"مجوهرات نسائية","files":["1lU0APG-vPfVvgYAg-dn8MfsRbtl92BTc","1tcwrgFbQn6zieX8A8eIw-0BPnEjY88GM","17rlPhWQgZ5lLm65gNPMAs_H4UOpoCdAp","1HTWifmN-y9kTJuxupyCrcSdianu4_pvF","1Jb1XKjeknK7fkkxIpF7vT2O2G5FH4pZo","1QJ89shmePaSLG_2BiexVORvjgbaRrxjX","1QxBBhT_hhqdGF6lNO9zsTK1luk_9LxgI","1S1vt5GyPlldhX6Iu4DA-pHOHJrzIAmtf","1ooASlBdD6as9ptOg_mzQf4h1qkzPrb6b","1pn1ou9RkmrjgSJ5PWwLas4gGFa_ajJE0","1qTWjBjmBJiWnWzX3N3K9zZ7AX7To398L","1Mi-ituxR9SzHh51i08F0U_jfmJNWKzk_","1R-dEIANvjOExBIXy6acYF7jcSMBmVx73","1R5Em8Vt4YeR04A8dF2PzHpA80khosXD8"]},{"id":"180nxb-rAsdJ8ONhfN3T4eujzfIx7YWQb","name":"سوار فيسكي، سلاسل وحلق ماستر","group":"مجوهرات نسائية","files":["1l3_uVA04jE74xJ_5KbYEP1M93UbsRRA3","1yxuduEdcP_xUbOCxLhRgo9xgh0wnn0de","11dYPt65oO5_VFdsXCYgFeagp9NTTwT-5","1FT9t2WHnlzFE1xVLMGg5yVOwRgeTyCpJ","1r0X91UGh1aMNvSNtlCqMXk0u4WdvtkC0","1x5tjFpxy4FYIsN274Ai-HWzRUhQXwtMU","1Bu860y5TK52Aa7PS6amKsEqiE01XSB4P","1kTHaaxUVfHlQDstHaF9mfUcfaGKvFXQ7","1AdNFbWXsnODoBD-BSR3-IUBJmA6U7HH2","1nbmfFfMz63s4GdTDhyhv42Dy3b2V6AK6","1lCE74HhFSK20P4CRKjecBM_jkQ0SHUj0","1uU7v-48orRO48rEL7PTuvW6nZ75yg-0q","1fzCcNhVm1cu-HsIAJ4vbLfokzrXV7Cg7","1yE-VH1F9YqMrRRthTdk6HWFOWWdTELae","18oy6tm2Hgv7_ZcLinfdarclhzLnSzHNs","1wDdeM-gdOLd5BfsJNWT2YOXK59RNt6H4","1_qwOKsFyIGQGwiqI4R4vdHBicUvb2Yms","1xyWBCFDOwCZAXQ-WfhCLfxc5see5jGOk","1VK-L8WKqO5vpLFSvIxoyahZvSW_AQiHN","1XQrx-MNn4khQyEw_HnF9vYAdNIHXtzDM","1-8tgZOkFk7CraYv0KChmAzMyxdwwRYcY","1rkl8RJp0pdaerznjqU4f5278ZeHRtI2z","1-dGGQZFofJPm9M3oCrvBWJrwpqbX8gUr","1QiXzwpS2zJdUNIPLlU4tLv9o6On9s21Y","1CPXeSBnsrHv_ngupXBUtUt1xPJVJpg3-","1yp7pvotKyHGFE7joOjh4YSZDtxM03CK1","121Hcl-izhfF9sUukjg60iQp5WL_Ln-ub","13pu8B97dd7dazplVRoCQT3VHWPGH8vA1","144INBQYX5I16puRyTmPs4iQll_T9HMTl","14XfJgjesav829sMA2OfJ2vZZu6g5Oduu","1D1BNsks6eHU2Ad5tB-loq8p7Tb7EO5zV","1E8U0Ra4GVuAClrZnMakanlOiN3xlzRZ8","1FghG2IHqywL9JLawcCeBk9yrCpqojNch","1G8cPNcBi_lIu07t1YXE4AKpbrGPRKwZC","1O713hkjkTpcy6poIgiFCkRL4F5svTrJA","1ObA6CUyJ6RK4OrtcaHIDiVMFGrk8MtvG","1PMDg1JM5ZhH73R5p3MadpREXfnsiE0cR","1QRyJjMpXKyHM0GKPB1jG8ckU2OUufDsG","1U2F6sd3PcDILRlKOByOwPJ_ILOONnk14","1W7UAlsbL7toXNZlJ38KfGIsn5W_bYun1","1aWjCrNVxIgwxhPgY3Fl4QmXpJy_ZHpd0","1gAGWXgC35QylpcOwJyj7eJh9dIjcxWdi","1hE09sxZkD3BF58Pf39WKJIbIhnqZaRsr","1lhJp3uEMBKR5BPHJIlRmTiqXxYs7BfgK","1q7EDxMtLYl4SfvrSp_-kF4aRBRFwhTnl","1qJXRaOKJBiVmpFXM2zI5gCVne_gvQ82X","1qXIq5HW5NTcxFQv9c2CUDwcextYInE1q","1qz84kQzrJDgTpGY36sGcEXw30pi5YjhQ","1ssNnQfbOIu-ur4oUlyYxg40TscVgoUCM","1uESsTjseDiFU1w0ckW6HUOW1w9mB3Xh1","1ukdw2XRu7B8EKJ0N-KtTK4HKUUqVCkks","1vboo3OCTg48JUmkM9yBnuf-2mQmYTPp0","1wFAH9HTSQyBL7_cendpCbPXUSex_o_kj","1-MVD8uJeIXQ5VUwH_XFuVeRZLLBEiDkG","136ntTBLf9A0-az8GiOgNvyc9jPJE8Obq","13EVC5_uYKh0oSo1ovmbklMI2GpzmDRRp","18bdYeggUCckAI88zrR7xHx8pEWj1qfb_","19AC8oWEPqIfVhEErbLzlL7xpbW0gfwQa","1BMvmdlZxWm2uLsWQ56fyWkb9biNObA1v","1BQALBjZcursyiz71mgCt7D6nGOxA4QpM","1CI1pt_VLK3WTmKoEkuNLRc_eFNdJ0mEW","1CN-UQ44KDs5lRQdAcRvpxAuReAYhllvF","1FVo084QdsBDPgg3WEExTuf94WSzcZzjE","1Fx1aCJX-7SACM7SQaXfPnjxxOVBJtEkh","1IpzwIfX9gAyWNC87bMTer22WzBpHApFh","1JTYJH_i6MjX2wYSsU0eCGQlgqfbxXxIu","1JWb53inwj6jMAwbzBrpri2vQKzoldyod","1L-y9Nj36qzgdOskRKMgsM9HgtfO_6GfZ","1L9wDw0UyhovF1GbaH1E0_tNSdrnIGAzM","1MCJ4wwEc5TOagGJx16SQC9xhftOKRdJA","1P_6tLhBmheRESS0xHzwxCJRc1gVPz_7G","1TUUJaOVubYS6NXYZPcbk0lqssNTKn2DX","1Um_MQ_E8ftZOn23S72unrTU2_Gx9A40h","1YBvDx938tNhTB6ptJn6tP-tkMRqySGx3","1YUmlgcEic7FLTafwjcD65-KiLW9zux4i","1c8GQHYVJOkld50ks5vPST8yZ64yXif20","1dS5K6UDr5Q4gBAWTIJJx87uxa-h9458C","1fYNoGP5xH6opAvkv16b_BgZQTiQ7chGz","1hkLmd-GRpA29WMiy6gc4IDiI3uf4zUHP","1r0wvMG5QNqJnafEBJ3-VA_bUOzlF9CsV","1u9zgtPaNuP972qURLlNPwSejEB1Ycj4p","1xhe9rkJn6BFVlD2TxnNM1ZBM4hyQWfQa"]},{"id":"1abq8fDXh1SnVouHajHD8OnSmJTtm_nYy","name":"سلاسل مع حلق وسلاسل بدون حلق","group":"مجوهرات نسائية","files":["10irsVlvoIIE0SJ_ENUr2sCJHaY7L6GL7","11KN0DFtwbNComMMn-Tgr00bMpxlb2B1H","13TLd3ABYYyDpOV1Jyiw8hh0p50I499hj","14I3IdwihwffLXzdx3Zxc_Xqp5kRP8Ozn","part-2/15vombgmdJM4El0LF5rTzuSUaDVnyZnDE","part-2/15x3xZczeFFofTHAL7Q4Ll4xBmOL4xFum","part-2/19-djxB-1RTNezQplPDwF-D8aC7QsX1hG","part-2/193mxgsuF602t4WR7mbF7zYY6XDmFFT8E","part-2/1CthfjvLDOwUOV7H99cIT9HiJuyPHUFZJ","1GwdXrWbVxautXJkXkgBeX-479zDoWtnc","1HZ7uyK7wn_o7oHBn2ULG91--rjIwyERX","1HlQAAWTVUbHYZKjFGzxgzMCUKTqaq0Gp","1Hvv68X8KQofMBcerezXMjL-o5932pR83","1I7Wq5ofpTQ3qpEZt0HKaq6rtuTIoF_MG","1IAtJYAXz8OMEYjNwS0rDhWwE5o48jFi4","1JfURLdIcILsblcioM4eLlaBF5SQdnj9T","1KDTMLcsCfxk0pYDKJXk6j1mbaaD4kWos","1L1XiGdXL2sauanYAGhEfLHK0LMNiYnzX","1LK7FCspC3gS5Hq5mFalodkthhCfXAOuB","1OdKSa5mMcq4AXKx_ByajEgWym9o2PRod","1Owz563bJcJRVsmuGGlp9Fvlu422yhtD2","1PAaikPMmSSSBBQO7irb8oDBuRVb3Zerd","1Q-36yDZRVCCr6ZaFPYgEk03JBlifudAk","1S2t8NHb03Ws9kHrGVrdfGXamLUq7zhXX","1UkGY-I04WM_1zsnoQiwisXRYXbORMB7r","1UyZQtgwHVy3nRvnyKoRhemL25S-f1LEi","1_eHCWSuYrq7wcdy_8uM2D17KyFF5Vf4J","1dHCDU1uBk_o-WGSU3oF__OYQ-ln1wy7G","1imW7A8SRDwoNqnkMgD6PgxP54aN2VG2C","1nHHZRhAZaSRiFHAsWiFw6NScsOOWC0lJ","1odpbJTryaC0Olq9CFrVvXEOLEeaB0Tv8","1pUxk72CWm2W050ASPWN0i4KgT0MZRDb8","1re9g-BJE1xQHVBf470bvw2LJwjzerw36","1vHv-Nm82buE8iGuKO4dBunbgfwpJPvKa","1vyAHl-H6SSgCsKMsMnhWp2veHaGXSJJo","1wqiaAwACRY7bEQeDl8Y6xBOcUoYX-yL1","1xKe7JZZMWp0nW2kOS_oUtYeDPZwPmkGp","1xyEvzGpD0wbVR6H49r_1PY_Y3EeUnZWD","part-2/1-O8RJIrI9Rnl_tdUiMW_voo7Cxtu5WOw","part-2/10WD2XbuBeYFAN7iY_DUZ04Dq1Q0cW5FO","part-2/1DPjzewOdHjX3prEOuNqHTd4CO26P5RnN"]},{"id":"1RBwUONNpv77_38oZcF6kMCdrnug-KIGj","name":"الخواتم","group":"مجوهرات نسائية","files":["part-2/10pdlgAeezRP72A0Q_LrhScQGoAwc8kCk","1W3OK8ZKgdcXKqkU_ogxH5ccemCB2MrJx","part-2/1-wCZz3vadC-iIbqODqaz2u6ZfpRBCBs-","part-2/14Mi5KZyvlIOwJpLewQGGBvMRmJZIw8b1","part-2/15dVUnfRzSrXGGQBYRVSSJ50pg4rCycB_","part-2/15jtdu3jqwbYGAsoM6efHhlwf0EhsVRgC","part-2/184GPtbFVegG8f23f1MydIsUfagg7lJGb","part-2/187e3zaZAQ9L9KAbYUlslIXtISYFklMYw","part-2/19vbfbxm7ccR_K3LBUT205mMgZxSsGcmb","part-2/1EV_YIIvf9shcvaPI5Qze2znLPTlQ5gh1","1GP6cACn5_z4XXNqmnlEmOkhBAQ3ReXpX","1KEB3Lc_Ye6bmNjLdarqzZxcakDOZxM0p","1QCk7RsYon9mLj-RXMpSDah1CuPd26WUM","1RifFRtMxED1gppO_JpaX7w4y-pC8mzDs","1S1nKBEvFK9zNAI8FLmcBoUHmJioVA0Y_","1SFKiNu_dsXuXciUxhCGo2vMvPG7RD5fN","1UyxTJfch7jI98pX7zl_a3d7ufP8B5A1k","1ZWaMqtGLFuQ5SxW6yPBfUDNG-M-YUr44","1Zdsbk8tBi4-qoK5Ndc98DOpr1tZju9zb","1cQConQjnMKB3RP42jeYRG1BqPRv1dUDp","1lfT5nLuZBuyvWOQHGpF2LHcEcwe2WwOC","1o4h3fIUv4soNQ18xSKiDZ315esp6RmBm","1q1BToQl3GLFL2Yov5DtcgVvHXCjIfwEO","1sGTyeEjXZHXYoFHu9nEX6BXB8XXiSfe0","1sRSqRX24sWrR1VA1uZ0CExzxChW3V6FM","1x8m7khxqE9lj_4QlLdiaz234crD6d0bm"]},{"id":"1AdZTKCEZMv3_be9beIa3gpL947Y1y23T","name":"أساور يد","group":"أساور","files":["1rNnrbQwDNlZxbDRVnU5UWAavdXWPTFY0","1Wzf72JuYaKUyt_rNFa2VX-AJYa1Du-qA","1Y99CScQdTA15SzPi3l94y4OTUGf-BIQj","1btb8Spyzo3et1j8en3WD_TomzOWXnJEM","1p6Mk9DPnAAJBNUX7r-wj1xKb0htubjFD","part-2/11bN9YvJOqqpw4tAGoYYXENafgugxm9yP","part-2/128837voFJf9o4Sv29r0hQBlEb9Gi6fYe","part-2/1ALgfigq_8zMO-bH8Idi2-fVmEDDqg8wI","part-2/1C4my_ZQwbFAb3fc_-ma1Frq83jr4alMP","part-2/1CPXyLgZd9qn_9cuYh9S7U4HxXnv0ItHT","part-2/1FICjemIbK_Un41xvjhLUWJvqIASPJ7KE","1UgCX2FJiRXHTSrdprPqxrnqlnRspnExC","1VhEXeUwH-R5_0iplt97tWAh744AThLgY","1VmNrfTE0EuMGDXIu7psmYw0XwpvpyrMo","1W6dydb-qSmTflK1K2xBvutzWokqoRgUY","1fshZueBXRigpxhoO6_Q3LN1SAV00vX7N","1gTdpm84u8Zo1FqRO9U6G1C4WBf9YooYp","1xFAGZMmd6lB9y3X9HNDGQ9XMGdy80Ovb"]},{"id":"1NExZYD_RGulUaEmgevK1CEPMz85F6xgt","name":"أساور يد ماستر","group":"أساور","files":["part-2/10g-yi67HB3L9z5d3yqVvpNWJtKId6Ljk","part-2/161I0aMcWPgoWp96ZoCs0P2xjMCoVn_7v","part-2/16EX-A0h-_1lquo615-MNXSkbIgqZi40L","1HQv3zPTl5RAmoDzNjKsk6KC8nwruaKTS","1WzP-pbMu4W3hDqbOuj8YyMNgzb64HLqx","1YVNqBzzIqwJVTwHXp2yiYXdn3ARa3KXd","1_Mm92YSVFR6bwywkDGaszKQRGmgLqent","1_iHmV7ogilMSsAFnfJIoPpWxEdWN3YjE","1fBZYqGGaeWZh5gfYvJElmjKLOYHMXSeW","1kL6oZKIznNFAKsDy-nW_rpWe5Th5Efn6","1mPLPvFynmMsd0h018rdpC6VIxo4_2QYb","1pKSBc0HTwDcJR_mr53x6eBJVYFtlp-bQ","1zd1SXetgyDyfgWDXVo8KhZKl1BwIR4gP"]},{"id":"1pr9jk-jMHRqEVwrYr51OjjLv18uq9hai","name":"النظارات النسائية","group":"نظارات","files":["part-2/1168HPIo4sfQVsQ9Rzp0oCCP_nYc80XE5","part-2/1B41AF0bP5fJ688KHCNE4Q-oOw7OO0uV5","1L5Xrna_oqSHtGmVdJB-jCSKWL7tBRCjV","1LMnQBU92tK-Lf1CqNAZjT0DjOYSFMZ3t","1RMzF0II2_iYwF82J2aTS5C5EQ_INxxeD","1U0JXcTM2mzYofb9vbOPgq7Rl_ECL1H3h","part-3/1ewrENMs8VIeMMrUCEGF10gwH6RAKi3g1","part-3/1du5gQkNnAPZNnrIWblk2EQc4QJ9ybu46","part-3/1erz6Dq_jK6F_P3cNRWawKVkjPy0fMu31"]},{"id":"1ey-wBq1XgfFVXluXmArpd6G65Q7XxYlp","name":"النظارات الرجالية","group":"نظارات","files":["part-3/1BPcfA--brhSHGJF1KYNkpn6nuhKAmXxc","part-3/1BhmeRWgEd-ZAFOAFnQTvc4Dvqhdpsavv","part-3/1IH801uU-IsU3_L5AtUyzt2PCa9VBfMtw","part-3/1Sw1yQE2R1bWmOB-GOBys62claalJM6x_","part-3/1V52pb8e9CCpleBH7MHih0cwCFXRPaYQQ","part-3/1WY1MOBMFf6-hFWNQzF5uQ8zCTy7iLJhw","part-3/1c72441KSNQnh6qiapjcqB5kuW6dEpCid","part-3/1inzTp8uIyKOrsS2BwgVyjGYbmdxa-pLd","part-3/1j9HAud2g8GPtjh30bJQgWAJO8noZIHiz","part-3/1nMetqlA4ecw5Ix9Bj5Bce3OacxdyGLP4","part-3/1o87Jlz5vIzAJ_ueDN9k4HDgdmt6Wa2bI","part-3/1qruWGkbJNFeEj2dBKDSsSPUJGpxn8T4V","part-3/1uAmVcN6ny3D2UeECDHznA3wA-px9R7-o","part-3/1uE9lEhXCa91yPw9iz3AhftXfLkrbrrhU","part-3/14_Q0PKhmZ3igBPYUX6QfZU72-NXMQcB3","part-3/19D5nNFr7USIDUgRDrCKnX4hHvMVGLE7J","part-3/1GWNz7R3wX_XmtmzhXaABeY9kJC6DgC0U","part-3/1HKdlUKDkQIO4TGpg5803tRBLYc3YLAv-","part-3/1HSwEm_cyDPJH0JdWkueRgVDKUK-WGDix","part-3/1JKAU5M2sBeo-2blHdIyQVlwghkIlTIxH","part-3/1KGZP_sFuZe18iU7O7gmh-__wnBUTzRmj","part-3/1NJliZcCw7iY93DaFMA1Flx7TehRpfEa_","part-3/1PRgFLjZstAaqSvRkfMjwpS1LB8e8ilfl","part-3/1Su79GGS5NWRxSuCNMT_kGyzf2fhrJL89","part-3/1XBqFijut9FHvOTnCtMHYoN_Uy6HMhQ2Y","part-3/1_duQKxtGE9GYFwsxe1XlraVYnOHi7T4i","part-3/1as_RKGjgQPSYTPQTXt3G28qTSl07a-aH","part-3/1azjy_co-SuONQ7pbHNfG_wsrYRbze0Lx","part-3/1e1IiIU6_UPdER9ER5r1tzlylqZi1iJCC","part-3/1eE4GmfUx8LbkfmC3OrwpiYmBjIk75Flj","part-3/1eFGGcNHwUogl1uOJMwlaHMLniENSjSyq","part-3/1f_jV6AkqTkEJy9GV-uSbSy8PYiuf89HH","part-3/1jhm8BKFYPkm3rlH7pWbySs7Pbj5h_guL","part-3/1lt0c1YIwc9GpuwAOxW7pLRWkCyptze12","part-3/1pkf62XQ7wXB7naYo5r74m4AzQCgWcLlw","part-3/1tJC5cz_EQhVxG9pmrsftgYJi1Kb4vwaX","part-3/1tZrzBb5aAbk58Wfaw45__gIKUT8lhQaN","part-3/1ttak798EuBlqZzj1vceKQ_hMht2kRUdQ","part-3/1wwO0pOmcm6debiY2mXBTPN3sORTHXquk","part-3/1xj0HFbAibh2qRxQQ-WmjMKA_rvBckS4Q","part-3/1yhPr1yG8Ztv40NFD3n9EEcph-o3-IzRN"]},{"id":"1IjkqRb-GkahnoBhzvgZ6OgIC-B8P_9B_","name":"أقلام كارتير ماستر","group":"اكسسوارات رجالية","files":["part-3/1-Bxy3-v427jgBgXBjGO1V3FqRViX154d","part-3/1-YVB3PWn-dqPesGcX5lyO79eUO-DtXEA","part-3/11li_vr8fWntk7X9zPvT3MVXn1GnFctj-","part-3/121UM132Eh8af9JKiQJWEK_wNKiTr6IXM","part-3/13AbagKlBkKggGslkDbQpzAiffaijvLa7","part-3/13E2P-itnM_WDgXdax7Httwaj_MXBrOLR","part-3/13gH2DouszA60uWh8sOO4neU_vQIqhcMO","part-3/14EfC2jl9vEtHfGOxLaCzFf--ImYLVvNL","part-3/14IOrsY5jGHsWBIN_3G3xyoDSHs5HVigy","part-3/14eIPEhgb_w9lhRrUCPADX7A5B9hX1_bN","part-3/14wCLoXwSreomCcwLSl1so2Se_77s0GMl","part-3/15D7JljdpdvCzISwe1aq8jWNRzMilA9q9","part-3/16ZMtWImhb4vIvOVYykp2ilJkzLAqDqv1","part-3/198Zea36JAVOMVdpv1cHHDeUmruLd9xL2","part-3/1BKYaaUzDzLQadU6csiHr87OWzbgyGee6","part-3/1CayzOLw2TzYwV-ysXjWTI9eb33ZYMj-v","part-3/1Cnh1_lQg-fdJbodIcgbVkqGKJC-GGHlP","part-3/1CyphgAwM_K2Ovk3jNGCfnm3FalLxYZZx","part-3/1DVLfMIWE8ytTwYdaGLLtnQEskZQUqZLr","part-3/1EqDyrD4ApuZSouwA6OMtpisc-GcNFrwJ","part-3/1GQaD1voj6KZuK6hTeNTl4fRaYu3i557l","part-3/1H8b-L_7u94j1DXBPVnDZxcSXW0yVLLgt","part-3/1IfpP_7A7-rSj_FTby05lPEZbGnBWAoye","part-3/1KhEF93DEi14rmG2_YTAytkL9dkkpN60A","part-3/1LecWrMbIFMCZrX16spoW3U7zuhfxWaZ6","part-3/1MFmz-3U55-iPM55G9UtnLd6tCJz0fsTT","part-3/1MhgukmfdtynoP1DCj9cwxHf0dE__nJIQ","part-3/1NJQR5vZHI7GvIZuV5m5XrG1RHEVCCxOh","part-3/1NLseLW2gNkc3QrfG3ODnpf2aP5lZEfEx","part-3/1NVcrvvmlS6j_KBrhVkaskArrbtjojXkH","part-3/1O8AHsASPsXu8kowYAhMic67dfyC2AjDO","part-3/1OGUoxHDLI3Id2xHEPbBqDfnqonQ4aXB_","part-3/1OT9NRgpSaUGsT7y_lTXYklO9n0FwX_qr","part-3/1OuIsp01r7HL1NDKGL-3j1gWxdtsyzmAF","part-3/1PXT1g6tOoQVkwr4sZoroKOCxsgHQrdK4","part-3/1PYAegbpFXlPpJZ3fzBezvB-mxddMKtZc","part-3/1PuMN5cFF9I_v167JSSTjbBRJL1ESPeuP","part-3/1Qc8WOfocUvOUabztNLa9cM1fQlqamFwJ","part-3/1RHW2sCjfSC--UUn6R_cBRaKit-sMnbqC","part-3/1RIWm4WK1s-kU8rdnd03GB4RuSc9m6OaT","part-3/1RPf8zPqhOaxD-kezGVIprezoYx7Oi4ny","part-3/1SvM1r7egWMEmh0Maa1qnLLaHBW9i-r69","part-3/1TkHACXJ3HN7Pp5xcpMj16pchKE3ufwXk","part-3/1Tv7b7bP5Kc8y8E3qIhhfPzo5cOOXi00X","part-3/1UQJ7n94n3zICaHSKTazHL4kBbrn98i4D","part-3/1UjCL4HixWl2yuliyzJfX7gcCtkqObZi0","part-3/1YQb4YR2wYNV1uEj7fZnOTh44oaw94vN9","part-3/1ZoeRynOVCxLnua0hz7JyfHGweeYN7JQT","part-3/1_WgICv1JAGrKq2QwsWII5MxgB02j81rj","part-3/1a1mgl5srU6rDj5WIZC7Aj5KOjK7M6yaD","part-3/1aUFUk17hIoBgFW_cUPZN3RPplaml_xmd","part-3/1adQwh9j3emNPOR5NOT6zQ5m27R3R1X_L","part-3/1bEAVkfk9gUeA0n22eNIZQ4v8k3miYntQ","part-3/1c0B2dVjD3Mn8oVqsqn3ZKAnu5MTwzdrY","part-3/1cUEvBqXkOoJZ7em0GCOZ8sVB7J9jMU06","part-3/1eEUUIm2Q9e3RbIPtJuMZmR4Cych5RZdh","part-4/1eEUbxdyeJ2nw4odepyQACFlUSq3XU41s","part-4/1fShLD9kgv7CmuUdH3wqCSQSQwZ8pzJK1","part-4/1fwR1z1X4po_eN1FeAAZwOY5psZ4SnXfT","part-4/1heN4SbZIGVh72d10h-DLOWHBmv6cqfUO","part-4/1i_HqbPEKDbUGy22MA5VlsuMrhjWg5eUh","part-4/1j9AITW2tL_ug5LaO_iIfXopNSL7wtJev","part-4/1mANBmQ50liNEQnDXugRS63HxD1rgw5YH","part-4/1n_HMrueGpxJe7TK62VGwHjfiD2XKrAIo","part-4/1nqFm6xjKLk6OGm50uCVOMz9iSB3XzoW2","part-4/1q9NOEutGIx-TzZlD4XnCI-bEc5BvHQ3Z","part-4/1sITfGs6jfNFTLs4SF47MNxwfPSbfwxvI","part-4/1tMhfP4dkCSTtMAmYrYx3lFx39Lr-V1wu","part-4/1uV0QD8VJQY0oLwJHcWr1n1KDgHVY50YG","part-4/1v6J57zKN39GBcIGcjPc_J-e_mBTdC0H8","part-4/1yoYP0AWVzS4kyzl8MMKhKTvgThP38bp2","part-4/1yxzgtXg44GA5ga11uTrZMbv6qRvmCOvV","part-4/1zXkVaAl5BOoLTZepUKETsxgiiMtN98D-","part-4/1zdUrq6E0SogHsPw-EwWx9BOFC2EJru5T"]},{"id":"1njEOnxLry3DGY_W_I0zATfnbAMi8Hrs_","name":"ميداليات مفاتيح","group":"اكسسوارات رجالية","files":["part-4/1T-lszVW4tK_sTZuJhllMZCsExtIf10DG","part-4/1WMbWS9KWpKAhWCGYJf-cIutLeY05BZnD"]},{"id":"16zaqTPbWJ5ExmahNdLTdtOjARCWij8qA","name":"أثواب شتوية","group":"ملابس وعروض","files":["part-4/11vlumCbutemzsWKa_18RLZPW7H2-FwJG","part-4/17hwmuFLfi6JDzYcM7XJ87HV1Mv5PoYQq","part-4/1A5hk9YMhBP6ssHISv6mv3-1ZvzY29gXw","part-4/1AFlJqyOJKDiuJ2efB7BWqIcb6LLMUq35","part-4/1Kh-vknLZnqno_8eXEsrWPkiZYDFABMJm","part-4/1OaEpAXYxsGn5C4slR9PdigD6D8DfhC9B","part-4/1P2eIudBbOolYiCHFzCc1G1ZjJa35VPCD","part-4/1gWaFdF1jHCls82itod5edyppc6Xgg7yt","part-4/1kR4z8aW1UHWegZglzfzo8AqdxFbMy1FZ","part-4/1ohrZ9--JZgOYqXDY4pPlZI3IlQva7DgI","part-4/1p3uwDlmvVH3OihLFQgODvegRFG8eIUuX","part-4/1rXtOC3vObvIdW9SyL1Ev-EFSwR3WrLWN","part-4/1sKVURkZuo5epP0_gjLU4kv9msx6i-K1F","part-4/1xAofcvy51457-ViV41Iste1KK3-NU5DX","part-4/12sj9Ry0T8ccXnZYNJU222kSlHCH1uzo-","part-4/15vJ44kdnxrwr-IZdia30NTnIwnaItcRM","part-4/18RzFgOBuE26G2VWISPITHiuOvXAB6KHq","part-4/1Jzqznzo5EldyV-wX36rg6jEBbaX_3LDb","part-4/1KOkHUq2u5yoKN4h55AK0-pFOCWKQ2aoR","part-4/1OHdrTwpxta6sB2JtK2T7_QF8-wf5ZZpX","part-4/1bbyI7dshk-4FSOaxYr1M1SpYGgOWf7Qp","part-4/1bmhW9KEWTR3noR_gmnGrEID7Jh7zOzF1","part-4/1e5LMVmSTLJupKfhNt1bR__jx5xTU1mck","part-4/1hzJWCmJE-sUKfjHkIvd9QfVirXFUGAtd","part-4/1nyJKYw9JQSVrzEsZBApeYS3eaPanU7TF","part-4/1uP1gmK8alimLvaFkYA8jF7nBCsb1T2NV","part-4/1uwyhc5YlSeL03Ib5s7AagREhKAkWu3rY","part-4/1yhx5qBkRDbgiAgIU2YSHNPaJSh7IPqWb"]},{"id":"1UcZmjHC-gzM4EssUznbXVr1dffnW3GuH","name":"بكجات وعروض","group":"ملابس وعروض","files":[]}];
-const PAGE = 24;
-const BASE = 'https://pub-7074869cb8604385ac53320ad28c1d88.r2.dev/store/'; // ضع هنا رابط R2 لو الصور في مكان غير مكان الصفحة، مثال: 'https://pub-xxxx.r2.dev/'
+const PAGE = 21;
+const BASE = 'https://pub-7074869cb8604385ac53320ad28c1d88.r2.dev/store/';
 const PATHS = {}; DATA.forEach(s=>{ s.files = s.files.map(p=>{ const id=p.split('/').pop(); PATHS[id]=p; return id; }); });
-const thumb = id => `${BASE}${PATHS[id]}.jpg`;
-const big = thumb;
-const alt = id => `https://drive.google.com/thumbnail?id=${id}&sz=w500`;
-const slug = (s,i) => 'sec-' + i;
-
-
-let okCount = 0, badCount = 0;
-window.__ok = el => { el.classList.add('ok'); okCount++; document.getElementById('notice').classList.remove('show'); };
+const src = id => `${BASE}${PATHS[id]}.jpg`;
+window.__ok = el => el.classList.add('ok');
 window.__err = el => {
-  const id = el.dataset.id, n = +(el.dataset.try||0);
-  el.dataset.try = n+1;
+  const id = el.dataset.id, n = +(el.dataset.try||0); el.dataset.try = n+1;
   const urls = [`${BASE}${PATHS[id]}.jpg?r=1`, `${BASE}${id}.jpg`, `https://lh3.googleusercontent.com/d/${id}=w500`];
-  if(n < urls.length){ setTimeout(()=>{ el.src = urls[n]; }, n*900); return; }
-  el.onerror = null; el.closest('.tile')?.classList.add('bad'); badCount++;
-  if(okCount === 0 && badCount >= 3) document.getElementById('notice').classList.add('show');
+  if(n < urls.length){ setTimeout(()=>{ el.src = urls[n]; }, n*800); return; }
+  el.onerror = null; el.closest('.card')?.classList.add('bad');
 };
+const imgTag = (id, extra='') => `<img src="${src(id)}" data-id="${id}" alt="" ${extra} onload="window.__ok(this)" onerror="window.__err(this)">`;
 
 const total = DATA.reduce((a,s)=>a+s.files.length,0);
-document.getElementById('stats').innerHTML =
-  `<div><b>${total}</b><span>صورة</span></div><div><b>${DATA.length}</b><span>قسم</span></div><div><b>${new Set(DATA.map(s=>s.group)).size}</b><span>فئات</span></div>`;
+const withPics = DATA.filter(s=>s.files.length);
+document.getElementById('figs').innerHTML =
+  `<div><b>${total}</b><span>قطعة مصوّرة</span></div><div><b>${withPics.length}</b><span>قسم</span></div><div><b>${new Set(DATA.map(s=>s.group)).size}</b><span>فئات</span></div>`;
 
-document.getElementById('mosaic').innerHTML = DATA.filter(s=>s.files.length).slice(0,6)
-  .map(s=>`<img src="${thumb(s.files[0])}" data-id="${s.files[0]}" alt="${s.name}" onload="window.__ok(this)" onerror="window.__err(this)">`).join('');
+// hero strip: two picks from each section, doubled for a seamless loop
+const picks = withPics.flatMap(s=>[s.files[0], s.files[Math.floor(s.files.length/2)]]).filter((v,i,a)=>a.indexOf(v)===i);
+document.getElementById('track').innerHTML = [...picks, ...picks].map(id=>imgTag(id,'loading="eager"')).join('');
 
-document.getElementById('chips').innerHTML =
-  `<button class="chip on" data-f="all">الكل <small>${total}</small></button>` +
-  DATA.map((s,i)=>`<button class="chip" data-f="${i}">${s.name} <small>${s.files.length}</small></button>`).join('');
+// index
+const idx = document.getElementById('idx');
+idx.insertAdjacentHTML('beforeend', DATA.map((s,i)=>`<a href="#c${i}" data-i="${i}">${s.name}<small>${s.files.length}</small></a>`).join(''));
 
+// chapters
 const groups = [...new Set(DATA.map(s=>s.group))];
 const shown = DATA.map(()=>0);
 document.getElementById('main').innerHTML = groups.map(g=>`
-  <div class="group" data-g="${g}"><h2>${g}</h2>
+  <div class="group-title">${g}</div>
   ${DATA.map((s,i)=>s.group!==g?'':`
-    <section class="sec" id="${slug(s.name,i)}" data-i="${i}">
-      <div class="sec-head">
-        <div><h3>${s.name}</h3><p>${s.files.length ? `<span class="badge">${s.files.length} صورة</span>` : 'لا توجد صور حالياً'}</p></div>
-        <a class="drive" href="https://drive.google.com/drive/folders/${s.id}" target="_blank" rel="noopener">فتح المجلد في Drive ↗</a>
-      </div>
-      ${s.files.length ? `<div class="grid" id="g${i}"></div><button class="chip more" id="m${i}" hidden>عرض المزيد</button>` : `<div class="empty">هذا المجلد فاضي في Drive.</div>`}
-    </section>`).join('')}
-  </div>`).join('');
+  <section class="chapter" id="c${i}">
+    <div class="ch-head"><h2>${s.name}</h2>
+      <div class="ch-meta"><span>${s.files.length ? s.files.length + ' صورة' : 'لا توجد صور'}</span><a href="https://drive.google.com/drive/folders/${s.id}" target="_blank" rel="noopener">Drive ↗</a></div></div>
+    ${s.files.length ? `<div class="grid" id="g${i}"></div><button class="more" id="m${i}" hidden></button>` : `<div class="empty">هذا القسم فاضي حالياً في Drive.</div>`}
+  </section>`).join('')}`).join('');
 
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }),{rootMargin:'0px 0px -6% 0px'}) : null;
 function fill(i, n){
-  const s = DATA[i], grid = document.getElementById('g'+i);
-  if(!grid) return;
-  const end = Math.min(s.files.length, shown[i] + n);
+  const s = DATA[i], grid = document.getElementById('g'+i); if(!grid) return;
+  const start = shown[i], end = Math.min(s.files.length, start + n);
   let html = '';
-  for(let k=shown[i]; k<end; k++){
-    const id = s.files[k];
-    html += `<button class="tile" data-i="${i}" data-k="${k}" aria-label="${s.name} ${k+1}"><img src="${thumb(id)}" data-id="${id}" alt="" loading="lazy" onload="window.__ok(this)" onerror="window.__err(this)"></button>`;
+  for(let k=start; k<end; k++){
+    const feat = k===0 && s.files.length>=6 ? ' feat' : '';
+    html += `<button class="card${feat}" data-i="${i}" data-k="${k}" aria-label="${s.name} ${k+1}" style="transition-delay:${((k-start)%8)*60}ms"><div class="ph">${imgTag(s.files[k],'loading="lazy"')}</div><div class="cap"><b>${String(k+1).padStart(2,'0')} / ${s.files.length}</b><span class="v">عرض ←</span></div></button>`;
   }
   grid.insertAdjacentHTML('beforeend', html);
+  [...grid.querySelectorAll('.card:not(.in)')].forEach(c=> io ? io.observe(c) : c.classList.add('in'));
   shown[i] = end;
   const m = document.getElementById('m'+i);
   m.hidden = end >= s.files.length;
-  m.textContent = `عرض المزيد (${s.files.length - end})`;
+  m.textContent = `عرض المزيد · ${s.files.length - end}`;
 }
 DATA.forEach((s,i)=>fill(i, PAGE));
 
 document.getElementById('main').addEventListener('click', e=>{
-  const more = e.target.closest('.more');
-  if(more){ fill(+more.id.slice(1), PAGE*2); return; }
-  const t = e.target.closest('.tile');
-  if(t) openLb(+t.dataset.i, +t.dataset.k);
+  const more = e.target.closest('.more'); if(more){ fill(+more.id.slice(1), 48); return; }
+  const c = e.target.closest('.card'); if(c) openLb(+c.dataset.i, +c.dataset.k);
 });
 
-const chips = document.getElementById('chips');
-chips.addEventListener('click', e=>{
-  const c = e.target.closest('.chip'); if(!c) return;
-  chips.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on', x===c));
-  const f = c.dataset.f;
-  document.querySelectorAll('.sec').forEach(sec=>sec.hidden = f!=='all' && sec.dataset.i!==f);
-  document.querySelectorAll('.group').forEach(g=>g.hidden = ![...g.querySelectorAll('.sec')].some(s=>!s.hidden));
-  if(f!=='all'){ fill(+f, 1e4); }
-  document.getElementById('main').scrollIntoView({block:'start'});
-  c.scrollIntoView({inline:'center',block:'nearest'});
-});
+// subtle tilt on pointer devices
+if(matchMedia('(hover:hover) and (prefers-reduced-motion:no-preference)').matches){
+  document.getElementById('main').addEventListener('pointermove', e=>{
+    const c = e.target.closest('.card.in'); if(!c) return;
+    const r = c.getBoundingClientRect(), x = (e.clientX-r.left)/r.width-.5, y = (e.clientY-r.top)/r.height-.5;
+    c.style.transform = `perspective(900px) rotateY(${x*5}deg) rotateX(${-y*5}deg) translateY(-4px)`;
+  });
+  document.getElementById('main').addEventListener('pointerout', e=>{ const c = e.target.closest('.card'); if(c && !c.contains(e.relatedTarget)) c.style.transform=''; });
+}
 
-const lb = document.getElementById('lb'), img = document.getElementById('lbImg');
+// sliding index bar + scroll spy
+const bar = document.getElementById('bar'), links = [...idx.querySelectorAll('a')];
+function mark(i){
+  links.forEach(a=>a.classList.toggle('on', +a.dataset.i===i));
+  const a = links.find(l=>+l.dataset.i===i); if(!a) return;
+  bar.style.left = a.offsetLeft+'px'; bar.style.width = a.offsetWidth+'px';
+  const w = idx; if(a.offsetLeft < w.scrollLeft || a.offsetLeft+a.offsetWidth > w.scrollLeft+w.clientWidth) w.scrollTo({left:a.offsetLeft - w.clientWidth/2 + a.offsetWidth/2, behavior:'smooth'});
+}
+const chapters = [...document.querySelectorAll('.chapter')];
+const spy = 'IntersectionObserver' in window ? new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting) mark(+e.target.id.slice(1)); });
+},{rootMargin:'-30% 0px -60% 0px'}) : null;
+chapters.forEach(c=>spy && spy.observe(c));
+mark(0);
+
+const up = document.getElementById('up');
+addEventListener('scroll',()=>up.classList.toggle('show',scrollY>900),{passive:true});
+up.onclick = ()=>scrollTo({top:0,behavior:'smooth'});
+
+// lightbox
+const lb = document.getElementById('lb'), img = document.getElementById('lbImg'), thumbs = document.getElementById('thumbs');
 let cur = [0,0];
-function openLb(i,k){ cur=[i,k]; lb.classList.add('open'); document.body.style.overflow='hidden'; show(); }
+function openLb(i,k){
+  cur=[i,k];
+  thumbs.innerHTML = DATA[i].files.map((id,j)=>`<img src="${src(id)}" data-j="${j}" alt="" loading="lazy">`).join('');
+  lb.classList.add('open'); document.body.style.overflow='hidden'; show();
+}
 function show(){
   const [i,k] = cur, s = DATA[i], id = s.files[k];
-  img.onerror = ()=>{ img.onerror=null; img.src = alt(id).replace('w500','w1600'); };
-  img.src = big(id);
+  img.style.opacity = .2;
+  img.onload = ()=>{ img.style.opacity = 1; };
+  img.onerror = ()=>{ img.onerror=null; img.src = `https://lh3.googleusercontent.com/d/${id}=w1600`; };
+  img.src = src(id);
   document.getElementById('lbCap').textContent = s.name;
   document.getElementById('lbNum').textContent = `${k+1} / ${s.files.length}`;
   document.getElementById('lbOpen').href = `https://drive.google.com/file/d/${id}/view`;
+  thumbs.querySelectorAll('img').forEach(t=>t.classList.toggle('on', +t.dataset.j===k));
+  thumbs.querySelector('img.on')?.scrollIntoView({inline:'center',block:'nearest'});
 }
 function step(d){ const n = DATA[cur[0]].files.length; cur[1] = (cur[1]+d+n)%n; show(); }
-function closeLb(){ lb.classList.remove('open'); document.body.style.overflow=''; img.src=''; }
+function closeLb(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+thumbs.addEventListener('click', e=>{ const t=e.target.closest('img'); if(t){ cur[1]=+t.dataset.j; show(); } });
 document.getElementById('lbClose').onclick = closeLb;
-const topBtn=document.getElementById('top'); addEventListener('scroll',()=>topBtn.classList.toggle('show',scrollY>900),{passive:true}); topBtn.onclick=()=>scrollTo({top:0,behavior:'smooth'});
 document.getElementById('lbNext').onclick = ()=>step(1);
 document.getElementById('lbPrev').onclick = ()=>step(-1);
-lb.addEventListener('click', e=>{ if(e.target===lb || e.target.classList.contains('lb-stage')) closeLb(); });
+lb.addEventListener('click', e=>{ if(e.target===lb || e.target.classList.contains('stage')) closeLb(); });
 document.addEventListener('keydown', e=>{
   if(!lb.classList.contains('open')) return;
   if(e.key==='Escape') closeLb();
